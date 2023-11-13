@@ -8,6 +8,8 @@
                     <div class="col-6">
                         <h2>{{ $project->title }}</h2>
                         <p>{{ $project->description }}</p>
+                        <p>{{ $project->id }}</p>
+                        {{-- <p>{{ $type->id }}</p> --}}
                     </div>
                     <div class="col-6">
                         @if ($project->cover_image)

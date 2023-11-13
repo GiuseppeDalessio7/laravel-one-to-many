@@ -56,6 +56,23 @@
                         </span>
                     @enderror
 
+
+                    <div class="mb-3">
+                        <span>Choose Type Project</span>
+                        <select class="form-select form-select-lg " name="" id="">
+                            <option selected disabled>Select one</option>
+                            <option value="">None</option>
+
+                            @forelse ($types as $type)
+                                <option class="" value "{{ $type->id }}"
+                                    {{ $type->id == old($type->id) ? selected : '' }}
+                                    @error('type_id') is-invalid @enderror">{{ $type->name }}</option>
+
+                            @empty
+                            @endforelse
+
+                        </select>
+                    </div>
                     <div>
                         <div class="mb-3">
                             <label for="description" class="form-label">description</label>

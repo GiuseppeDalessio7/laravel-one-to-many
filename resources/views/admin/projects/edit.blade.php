@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>edit project: {{ $project->name }}</h1>
+    <h1>edit project: {{ $project->title }}</h1>
 
     @if ($errors->any())
         <div class="alert alert-primary alert-dismissible fade show" role="alert">
@@ -63,6 +63,22 @@
                     </span>
                 @enderror
 
+                <div class="mb-3">
+                    <span>Choose Type Project</span>
+                    <select class="form-select form-select-lg " name="" id="">
+                        <option selected disabled>Select one</option>
+                        <option value="">None</option>
+
+                        @forelse ($types as $type)
+                            <option class="" value "{{ $type->id }}"
+                                {{ $type->id == old($type->id) ? selected : '' }} @error('type_id') is-invalid @enderror">
+                                {{ $type->name }}</option>
+
+                        @empty
+                        @endforelse
+
+                    </select>
+                </div>
 
                 <div class="mb-3 ">
                     <div>
