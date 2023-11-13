@@ -9,7 +9,7 @@
                         <h2>{{ $project->title }}</h2>
                         <p>{{ $project->description }}</p>
                         <p>{{ $project->id }}</p>
-                        {{-- <p>{{ $type->id }}</p> --}}
+                        <p><strong>Type: </strong>{{ $project->type?->name }}</p>
                     </div>
                     <div class="col-6">
                         @if ($project->cover_image)

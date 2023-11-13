@@ -64,49 +64,50 @@
                 @enderror
 
                 <div class="mb-3">
-                    <span>Choose Type Project</span>
-                    <select class="form-select form-select-lg " name="" id="">
-                        <option selected disabled>Select one</option>
-                        <option value="">None</option>
+                    <div class="mb-3">
+                        <span>Choose Type Project</span>
 
-                        @forelse ($types as $type)
-                            <option class="" value "{{ $type->id }}"
-                                {{ $type->id == old($type->id) ? selected : '' }} @error('type_id') is-invalid @enderror">
-                                {{ $type->name }}</option>
-
-                        @empty
-                        @endforelse
-
-                    </select>
-                </div>
-
-                <div class="mb-3 ">
-                    <div>
-                        <img width="200" src="{{ asset('/storage/' . $project->cover_image) }}" alt="">
+                        <label for="type_id" class="form-label">Type</label>
+                        <select class="form-select form-select 
+@error('type_id') is-invalid @enderror" name="type_id"
+                            id="type_id">
+                            <option selected>Select a Type</option>
+                            <option value="">Uncategorized</option>
+                            @foreach ($types as $type)
+                                <option value="{{ $type->id }}" {{ $type->id == old('type_id') ? 'selected' : '' }}>
+                                    {{ $type->name }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
-                    <label for="cover_image" class="form-label">Choose file</label>
-                    <input type="file" class="form-control" @error('cover_image') is-invalid @enderror name="cover_image"
-                        id="cover_image" placeholder="choose a file" aria-describedby="fileHelp">
-                    <div id="fileHelp" class="form-text">add an image max 100kb</div>
-                </div>
-                @error('cover_image')
-                    <span class="text-danger">
-                        {{ message }}
-                    </span>
-                @enderror
 
-                <div class="mb-3">
-                    <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" @error('description') is-invalid @enderror name="description" id="description"
-                        rows="3">{{ old('description', $project->description) }}</textarea>
-                </div>
-                @error('description')
-                    <span class="text-danger">
-                        {{ message }}
-                    </span>
-                @enderror
+                    <div class="mb-3 ">
+                        <div>
+                            <img width="200" src="{{ asset('/storage/' . $project->cover_image) }}" alt="">
+                        </div>
+                        <label for="cover_image" class="form-label">Choose file</label>
+                        <input type="file" class="form-control" @error('cover_image') is-invalid @enderror
+                            name="cover_image" id="cover_image" placeholder="choose a file" aria-describedby="fileHelp">
+                        <div id="fileHelp" class="form-text">add an image max 100kb</div>
+                    </div>
+                    @error('cover_image')
+                        <span class="text-danger">
+                            {{ message }}
+                        </span>
+                    @enderror
 
-                <button type="submit" class="btn btn-primary">Save</button>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" @error('description') is-invalid @enderror name="description" id="description"
+                            rows="3">{{ old('description', $project->description) }}</textarea>
+                    </div>
+                    @error('description')
+                        <span class="text-danger">
+                            {{ message }}
+                        </span>
+                    @enderror
+
+                    <button type="submit" class="btn btn-primary">Save</button>
             </form>
         </div>
 

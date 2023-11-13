@@ -59,18 +59,18 @@
 
                     <div class="mb-3">
                         <span>Choose Type Project</span>
-                        <select class="form-select form-select-lg " name="" id="">
-                            <option selected disabled>Select one</option>
-                            <option value="">None</option>
 
-                            @forelse ($types as $type)
-                                <option class="" value "{{ $type->id }}"
-                                    {{ $type->id == old($type->id) ? selected : '' }}
-                                    @error('type_id') is-invalid @enderror">{{ $type->name }}</option>
-
-                            @empty
-                            @endforelse
-
+                        <label for="type_id" class="form-label">Type</label>
+                        <select class="form-select form-select 
+@error('type_id') is-invalid @enderror" name="type_id"
+                            id="type_id">
+                            <option selected>Select a Type</option>
+                            <option value="">Uncategorized</option>
+                            @foreach ($types as $type)
+                                <option value="{{ $type->id }}" {{ $type->id == old('type_id') ? 'selected' : '' }}>
+                                    {{ $type->name }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                     <div>

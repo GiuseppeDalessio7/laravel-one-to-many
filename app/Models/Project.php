@@ -13,10 +13,11 @@ class Project extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['title', 'slug', 'cover_image', 'description'];
+    protected $fillable = ['title', 'slug', 'cover_image', 'description', 'type_id'];
 
     public function type(): BelongsTo
     {
         return $this->belongsTo(Type::class); // questo progetto appartiene ad un tipo
+
     }
 }
